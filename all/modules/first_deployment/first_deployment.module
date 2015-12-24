@@ -1,0 +1,7 @@
+<?php
+/**
+ * @file
+ * Code for the first deployment feature.
+ */
+
+include_once 'first_deployment.features.inc';

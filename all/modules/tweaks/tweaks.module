@@ -1,0 +1,14 @@
+<?php
+/**
+ * @File
+ */
+
+/**
+ * Implements hook_init().
+ */
+function tweaks_init() {
+  $image_style = image_style_load('banner_image');
+  image_style_flush($image_style);
+  image_style_delete($image_style);
+}
+

@@ -1,0 +1,6 @@
+name = Custom tweaks
+description = Provides tweaks to core functionalities
+core = 7.x
+configure = admin/config/tweaks
+project = "tweaks"
+
