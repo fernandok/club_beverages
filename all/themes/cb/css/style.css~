@@ -28,9 +28,3 @@
   border-bottom: 1px solid #E5E5E5;
 }
 /* views read more button */
-.views-more-link {
-    color: #ffffff;
-    background-color: #9954bb;
-    border-color: #9954bb;
-    display: block;
-}
