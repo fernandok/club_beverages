@@ -8,11 +8,15 @@ base theme = bootstrap
 ;; Regions
 ;;;;;;;;;;;;;;;;;;;;;
 
+regions[site_mission]   = 'Site Mission'
+regions[site_search]    = 'Site Search'
 regions[navigation]     = 'Navigation'
 regions[header]         = 'Top Bar'
 regions[highlighted]    = 'Highlighted'
 regions[help]           = 'Help'
 regions[content]        = 'Content'
+regions[content_mid_left]        = 'Content Middle Left'
+regions[content_mid_right]        = 'Content Middle Right'
 regions[bottom_left_content]        = 'Bottom Left Content'
 regions[bottom_middle_content]      = 'Bottom Middle Content'
 regions[bottom_right_content]       = 'Bottom Right Content'
@@ -28,3 +32,4 @@ regions[page_bottom]    = 'Page bottom'
 ;;;;;;;;;;;;;;;;;;;;;
 
 stylesheets[all][] = css/style.css
+scripts[] = js/cb-bootstrap.js

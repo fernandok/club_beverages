@@ -73,12 +73,24 @@
  * @ingroup templates
  */
 ?>
-<header id="navbar" role="banner" class="<?php print $navbar_classes; ?>">
-  <div class="<?php print $container_class; ?>">
+<header id="navbar" role="banner" class="<?php print $navbar_classes; ?>">    
+    <?php if (!empty($page['site_mission']) || !empty($page['site_search'])): ?>
+      <div class="row topmost-header">
+        <div class="col col-md-8">
+	<?php if (!empty($page['site_mission'])): ?>
+	  <?php print render($page['site_mission']); ?>
+	<?php endif; ?>
+        </div>
+	<?php if (!empty($page['site_search'])): ?>
+	  <div class="col col-md-4"><?php print render($page['site_search']); ?></div>
+	<?php endif; ?>	
+      </div>
+    <?php endif; ?>    
+    <div class="<?php print $container_class; ?>">
     <div class="navbar-header">
       <?php if ($logo): ?>
         <a class="logo navbar-btn pull-left" href="<?php print $front_page; ?>" title="<?php print t('Home'); ?>">
-          <img src="<?php print $logo; ?>" alt="<?php print t('Home'); ?>" />
+          <img class="img-responsive logo" src="<?php print $logo; ?>" alt="<?php print t('Home'); ?>" />
         </a>
       <?php endif; ?>
 
@@ -154,6 +166,17 @@
         <ul class="action-links"><?php print render($action_links); ?></ul>
       <?php endif; ?>
       <?php print render($page['content']); ?>
+
+      <?php if (!empty($page['content_mid_left']) || !empty($page['content_mid_right'])): ?>    
+        <!-- Mid CONTAINER -->
+        <?php if (!empty($page['content_mid_left'])): ?>
+          <div class="col col-md-3"><?php print render($page['content_mid_left']); ?></div>
+        <?php endif; ?>
+        <?php if (!empty($page['content_mid_right'])): ?>
+          <div class="col col-md-9"><?php print render($page['content_mid_right']); ?></div>
+        <?php endif; ?>
+        <!-- Mid CONTAINER -->
+     <?php endif; ?>
     </section>
 
     <?php if (!empty($page['sidebar_second'])): ?>
@@ -163,21 +186,24 @@
     <?php endif; ?>
 
   </div>
+ 
+  
+  <?php if (!empty($page['bottom_left_content']) || !empty($page['bottom_middle_content']) || !empty($page['bottom_right_content'])): ?>
   <!-- BOTTOM CONTAINER -->
-<?php if (!empty($page['bottom_left_content']) || !empty($page['bottom_middle_content']) || !empty($page['bottom_right_content'])): ?>
-  <div class="row">
-    <?php if (!empty($page['bottom_left_content'])): ?>
-      <div class="col col-md-4"><?php print render($page['bottom_left_content']); ?></div>
-    <?php endif; ?>
-    <?php if (!empty($page['bottom_middle_content'])): ?>
-      <div class="col col-md-4"><?php print render($page['bottom_middle_content']); ?></div>
-    <?php endif; ?>
-    <?php if (!empty($page['bottom_right_content'])): ?>
-      <div class="col col-md-4"><?php print render($page['bottom_right_content']); ?></div>
-    <?php endif; ?>
-  </div>
-<?php endif; ?>
-<!-- BOTTOM CONTAINER -->
+	  <div class="row">
+	    <?php if (!empty($page['bottom_left_content'])): ?>
+	      <div class="col col-md-4"><?php print render($page['bottom_left_content']); ?></div>
+	    <?php endif; ?>
+	    <?php if (!empty($page['bottom_middle_content'])): ?>
+	      <div class="col col-md-4"><?php print render($page['bottom_middle_content']); ?></div>
+	    <?php endif; ?>
+	    <?php if (!empty($page['bottom_right_content'])): ?>
+	      <div class="col col-md-4"><?php print render($page['bottom_right_content']); ?></div>
+	    <?php endif; ?>
+	  </div>
+  <!-- BOTTOM CONTAINER -->
+  <?php endif; ?>
+
 </div>
 
 

@@ -1,0 +1,290 @@
+/**
+ * Place your custom styles here.
+ */
+
+/* GENERIC STYLE */
+body { overflow-x: hidden; }
+a:hover{ text-decoration: none; }
+.img-rounded { border-radius: 25px; }
+/* GENERIC STYLE */
+
+/**** HEADER SECTION ****/
+.topmost-header {
+  background-color: beige;
+
+  .topmost-header {
+    .col-md-4 {
+	right: 1%;
+	float: right;
+    }
+.form-control {  
+  height: 43px;
+}
+  }
+}
+
+
+#navbar {
+  margin: 0;
+  
+  .container-fluid {
+	padding-left: 0;
+    padding-right: 0;
+	
+	.navbar-header, .navbar-collapse {
+	  margin-left: 7px;
+	  margin-right: 0px;
+	  
+	  .logo {
+	    width: 45px;
+	    height: 45px;
+	    padding-right: 0;
+	    padding-left: 0;
+	  }
+	  
+	  .navbar-brand {
+	    margin-left: 7px;
+	  }
+	}
+	
+	.fa, .icon {
+	  padding-right: 7px;
+	}
+  }
+}
+
+ul.dropdown-menu {
+  padding:0;
+  
+  li {
+    background-color: #333;
+	a {
+      padding: 10px 20px;
+  	  color: #fff;
+	}
+  }
+}
+/**** HEADER SECTION ****/
+
+/**** BODY SECTION ****/
+.front {
+  .container-fluid {
+    padding-left: 0;
+    padding-right: 0;
+    
+	.row {
+	  margin-left: auto;
+	  margin-right: auto;
+	  margin-top: 20px;
+	  text-align: center;
+	  
+	  h2.block-title {font-weight: bold;}
+		
+	  h2::after{
+		border-bottom: 1px solid #E5E5E5;
+	  }	  
+	  
+	  #block-views-beverage-vocab-block {
+	    margin-bottom: 20px;
+	  }
+	
+	  h2.beverage-termname {    
+	   margin-top: 10px;	    
+	  }
+	} 
+  }
+}
+
+.drink-categories {
+  .row {    
+    .col {      
+      .beverage-img, .dyk-img {
+	    img {
+	      margin-left: auto;
+	      margin-right: auto;
+          border-radius: 25px; 
+        }
+      }  
+    }
+  }
+}
+/*@media only screen and (min-width: 1200px) {
+  .front {
+    .row {
+	  .beverage-img, .dyk-img {}
+	  .beverage-termname {
+	    padding: 10px 70px;
+		bottom: 0px;
+		left: 21%;
+		
+	  }
+	}
+  }
+}
+
+@media only screen and (max-width: 1199px) {
+  .front {
+    .row {
+	  .beverage-img, .dyk-img {}
+	  .beverage-termname {
+	    padding: 10px 70px;
+		bottom: 0px;
+		left: 21%;
+		
+	  }
+	}
+  }
+}
+@media only screen and (max-width: 320px) {
+  .front {
+    .row {
+	  .beverage-img, .dyk-img {}
+	  .beverage-termname {
+	  
+	   }
+	}
+  }
+}*/
+
+.container-fluid {
+  padding-left: 0;
+  padding-right: 0;
+}
+
+.view-id-homepage_blocks .row {
+  .img-circle {
+    margin-left: auto;
+    margin-right: auto;
+  }
+  .col {
+    margin-bottom: 25px;
+  }
+}
+
+
+.drinks-stars { 
+  div.fivestar-widget-static {
+    margin-left: auto;
+    margin-right: auto;
+  }
+}
+
+.well {
+  border: 0;
+  box-shadow: none;
+  padding: 0;
+  padding: 0 10%;
+  font-size: 16px;
+  
+  .glyphicon {padding-right: 7px;}
+  ul {  
+    text-align: left;
+    .active {  
+      font-weight: bold;    
+      background-color: #E4E4E4;
+    }      
+  }
+  .level-1, .level-2 {padding-left: 15%;}
+}
+
+
+/* views read more button */
+.views-more-link {
+  color: #FFF;
+  background-color: rgb(22, 91, 168);
+  border-color: #9954BB;
+  display: inline;
+  margin-left: auto;
+  margin-right: auto; 
+  padding: 10px;
+  border-radius: 9px;
+  margin-top: 10px;
+  
+  &:hover {
+    color: #FFF;
+	font-weight: bold;
+	text-decoration: none;
+  }
+}
+
+.drinks-manufacturer i {
+  color: #165BA8;
+  padding-right: 8px;
+  font-size: 20px;
+}
+
+.block-taxonomy-menu-block {
+  .first {padding-left: 10px;}
+  .level-1 {padding-left: 12px;}
+  .level-2 {padding-left: 14px;}
+}
+
+.drinks-detail-left {
+  float:left;
+  .view-content strong {
+    color: #B1BABF;
+    font-style: italic;
+ }
+}
+
+.drinks-detail-right {
+  float:right; 
+  padding-left: 20px;
+ 
+  .view-content strong {
+    color: #B1BABF;
+    font-style: italic;
+  }
+}
+
+.drinks-details-img {
+  margin-bottom: 10px;
+  
+  img {
+    border-radius: 25px;
+  }
+}
+
+.dyk-img {
+  padding-right: 7px;
+    
+  .img-responsive {
+    border-radius: 7px;
+  }
+}
+.dyk-title-desc {  
+  text-align: left;
+  
+  h3 { margin-top: 2px; }
+}
+/**** BODY SECTION ****/
+
+/**** FOOTER SECTION ****/
+.footer {
+  color: #fff;
+  background-color: #333;
+  text-align: center;
+  
+  h2 {
+    margin: 0 !important;
+    font-size:22px;    
+  }
+}
+/**** FOOTER SECTION ****/
+
+/*** CONTACT FORM ***/
+form#webform-client-form-10 {
+  #edit-submitted-name, #edit-submitted-email {
+    display: inline;
+    width: auto;
+    margin-left: 8px;
+  }
+}
+
+/*** CONTACT FORM ***/
+
+
+
+
+
+

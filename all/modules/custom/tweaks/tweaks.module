@@ -7,8 +7,97 @@
  * Implements hook_init().
  */
 function tweaks_init() {
-  //$image_style = image_style_load('banner_image');
-  //image_style_delete($image_style);
-//  image_style_flush($image_style);
 }
 
+/**
+ * Implements hook_form_alter().
+ */
+function tweaks_form_alter(&$form, &$form_state, $form_id) {
+  if ($form_id == 'search_block_form') {
+    $form['search_block_form']['#size'] = 30;
+  }
+
+}
+
+
+
+function tweaks_block_info() {
+  $blocks['taxonomy_menu'] = array(
+    'info' => t('Taxonomy menu'),
+  );
+
+  return $blocks;
+}
+
+function tweaks_block_view($delta = '') {
+  $block = array();
+  // Taxonomy menu block.
+  if ($delta == 'taxonomy_menu') {
+    $vocabulary = taxonomy_vocabulary_machine_name_load('beverage');
+    $terms = taxonomy_get_tree($vocabulary->vid); // Use the correct vocabulary id.
+    
+    // Get the active trail tid-s.
+    $active = arg(2);
+    $active_parents = taxonomy_get_parents_all($active);
+    $active_parents_tids = array();
+    foreach ($active_parents as $parent) {
+      $active_parents_tids[] = $parent->tid;
+    }
+    
+    // Build the menu.
+    $term_count = count($terms);
+    $cont = '<div class="well">';
+    $cont .= '<ul class="nav nav-list">';
+    for ($i = 0; $i < $term_count; $i++) {
+      // Build the classes string.
+      $classes = '';
+      $children = taxonomy_get_children($terms[$i]->tid);
+      $active_trail = in_array($terms[$i]->tid, $active_parents_tids);
+      $glyphicon = 'glyphicon-minus';
+      if ($active_trail && $children) {
+        $classes .= 'expanded active-trail ';
+        $glyphicon = 'glyphicon-plus';
+      }
+      elseif ($active_trail) { 
+        $classes .= 'active-trail ';
+        $glyphicon = 'glyphicon-plus';
+      }
+      elseif ($children) {
+        $classes .= 'collapsed ';
+        $glyphicon = 'glyphicon-plus';
+      } 
+             
+      if ($i == 0) $cont .= '<li class="topmost '.$classes.' tree-toggle nav-header"><i class="glyphiconglyphicon-align-justify" aria-hidden="true"></i>'.
+      l('<i class="glyphicon glyphicon-align-justify" aria-hidden="true"></i>'. $terms[$i]->name, 'taxonomy/term/'.$terms[$i]->tid, array('html' => true));
+      else {
+        if ($terms[$i]->depth == $depth) $cont .= '</li><li class="'.$classes.'">'.
+        l('<i class="glyphicon glyphicon-minus" aria-hidden="true"></i>'.$terms[$i]->name, 'taxonomy/term/'.$terms[$i]->tid, array('html' => true));
+        elseif ($terms[$i]->depth > $depth) $cont .= '<ul class="level-'.$terms[$i]->depth.' nav nav-list tree">
+		<li class="first '.$classes.' tree-toggle nav-header">'.
+		l('<i class="glyphicon '. $glyphicon .'" aria-hidden="true"></i>'. $terms[$i]->name, 'taxonomy/term/'.$terms[$i]->tid, array('html' => true));
+        elseif ($terms[$i]->depth < $depth) {
+          // Add missing end-tags depending of depth level difference.
+          for ($j = $terms[$i]->depth; $j < $depth; $j++) {
+            $cont .= '</li></ul>';
+          }
+          $cont .= '</li><li class="'.$classes.'">'.
+          l('<i class="glyphicon glyphicon-plus" aria-hidden="true"></i>'. $terms[$i]->name, 'taxonomy/term/'.$terms[$i]->tid, array('html' => true));
+        }
+        // If we have reached the last element add all possibly missing end-tags.
+        if (!isset($terms[$i+1])) {
+          for ($j = 0; $j < $terms[$i]->depth; $j++) {
+            $cont .= '</li></ul>';
+          }
+        }
+      }
+      $depth = $terms[$i]->depth;
+    }
+    $cont .= '</li></ul>';
+$cont .= '</div>';
+    
+    // Set the menu html as block content.
+    $block['content'] = array('#markup' => $cont);
+  }
+  
+  return $block;
+}
