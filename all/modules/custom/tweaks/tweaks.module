@@ -46,8 +46,22 @@ function tweaks_block_view($delta = '') {
     
     // Build the menu.
     $term_count = count($terms);
-    $cont = '<div class="well">';
-    $cont .= '<ul class="nav nav-list">';
+    $cont = '<nav class="navbar navbar-default" role="navigation">
+	  <!-- Brand and toggle get grouped for better mobile display -->
+	  <div class="navbar-header">
+	    <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-ex1-collapse">
+	      <span class="sr-only">Toggle navigation</span>
+	      <span class="icon-bar"></span>
+	      <span class="icon-bar"></span>
+	      <span class="icon-bar"></span>
+	    </button>
+	    <a class="navbar-brand" href="#">Brand</a>
+	  </div>	
+	  <!-- Collect the nav links, forms, and other content for toggling -->
+	  <div class="collapse navbar-collapse navbar-ex1-collapse">
+	    <ul class="nav navbar-nav">';
+
+    
     for ($i = 0; $i < $term_count; $i++) {
       // Build the classes string.
       $classes = '';
@@ -67,21 +81,36 @@ function tweaks_block_view($delta = '') {
         $glyphicon = 'glyphicon-plus';
       } 
              
-      if ($i == 0) $cont .= '<li class="topmost '.$classes.' tree-toggle nav-header"><i class="glyphiconglyphicon-align-justify" aria-hidden="true"></i>'.
-      l('<i class="glyphicon glyphicon-align-justify" aria-hidden="true"></i>'. $terms[$i]->name, 'taxonomy/term/'.$terms[$i]->tid, array('html' => true));
+      if ($i == 0) { 
+        /*$cont .= '<li class="dropdown active">'.
+      l($terms[$i]->name .'<b class="caret"></b>', 'taxonomy/term/'.$terms[$i]->tid, 
+      array('html' => true, 'attributes' => array('class' => 'dropdown-toggle', 'data-toggle' => 'dropdown')));*/
+      }
       else {
-        if ($terms[$i]->depth == $depth) $cont .= '</li><li class="'.$classes.'">'.
-        l('<i class="glyphicon glyphicon-minus" aria-hidden="true"></i>'.$terms[$i]->name, 'taxonomy/term/'.$terms[$i]->tid, array('html' => true));
-        elseif ($terms[$i]->depth > $depth) $cont .= '<ul class="level-'.$terms[$i]->depth.' nav nav-list tree">
-		<li class="first '.$classes.' tree-toggle nav-header">'.
-		l('<i class="glyphicon '. $glyphicon .'" aria-hidden="true"></i>'. $terms[$i]->name, 'taxonomy/term/'.$terms[$i]->tid, array('html' => true));
-        elseif ($terms[$i]->depth < $depth) {
+      
+        if ($terms[$i]->depth == $depth) { 
+          /*$cont .= '</li><li class="'.$classes.'">'.
+        	l('<i class="glyphicon glyphicon-minus" aria-hidden="true"></i>'.$terms[$i]->name, 'taxonomy/term/'.$terms[$i]->tid, array('html' => true));*/
+        	
+        	$cont .= '</li><li class="'.$classes.' level-'.$terms[$i]->depth.'">'. l($terms[$i]->name, 'taxonomy/term/'.$terms[$i]->tid, array('html' => true));
+        	
+        } elseif ($terms[$i]->depth > $depth) {
+	        /*$cont .= '<ul class="level-'.$terms[$i]->depth.' nav nav-list tree">
+			<li class="first '.$classes.' tree-toggle nav-header">'.
+			l('<i class="glyphicon '. $glyphicon .'" aria-hidden="true"></i>'. $terms[$i]->name, 'taxonomy/term/'.$terms[$i]->tid, array('html' => true));*/
+           
+			$cont .= '<ul class="dropdown-menu">'.
+            '<li class="level-'.$terms[$i]->depth.'">'. l($terms[$i]->name, 'taxonomy/term/'.$terms[$i]->tid, array('html' => true));
+			         
+			
+        } elseif ($terms[$i]->depth < $depth) {
           // Add missing end-tags depending of depth level difference.
           for ($j = $terms[$i]->depth; $j < $depth; $j++) {
             $cont .= '</li></ul>';
           }
-          $cont .= '</li><li class="'.$classes.'">'.
-          l('<i class="glyphicon glyphicon-plus" aria-hidden="true"></i>'. $terms[$i]->name, 'taxonomy/term/'.$terms[$i]->tid, array('html' => true));
+          /*$cont .= '</li><li class="'.$classes.'">'. l('<i class="glyphicon glyphicon-plus" aria-hidden="true"></i>'. $terms[$i]->name, 'taxonomy/term/'.$terms[$i]->tid, array('html' => true));*/
+          
+          $cont .= '</li><li class="'.$classes.' level-'.$terms[$i]->depth.'">'. l($terms[$i]->name, 'taxonomy/term/'.$terms[$i]->tid, array('html' => true));
         }
         // If we have reached the last element add all possibly missing end-tags.
         if (!isset($terms[$i+1])) {
@@ -93,7 +122,7 @@ function tweaks_block_view($delta = '') {
       $depth = $terms[$i]->depth;
     }
     $cont .= '</li></ul>';
-$cont .= '</div>';
+$cont .= '</div></nav>';
     
     // Set the menu html as block content.
     $block['content'] = array('#markup' => $cont);
@@ -101,3 +130,60 @@ $cont .= '</div>';
   
   return $block;
 }
+
+/*
+function tweaks_block_view($delta = '') {
+  $block = array();
+  // Taxonomy menu block.
+   if ($delta == 'taxonomy_menu') {
+      $block['content'] = '
+		      <nav class="navbar navbar-default" role="navigation">
+			  <!-- Brand and toggle get grouped for better mobile display -->
+			  <div class="navbar-header">
+			    <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-ex1-collapse">
+			      <span class="sr-only">Toggle navigation</span>
+			      <span class="icon-bar"></span>
+			      <span class="icon-bar"></span>
+			      <span class="icon-bar"></span>
+			    </button>
+			    <a class="navbar-brand" href="#">Brand</a>
+			  </div>
+			
+			  <!-- Collect the nav links, forms, and other content for toggling -->
+			  <div class="collapse navbar-collapse navbar-ex1-collapse">
+			    <ul class="nav navbar-nav">
+			      <li class="dropdown active"><a href="#" class="dropdown-toggle" data-toggle="dropdown">Dropdown <b class="caret"></b></a></li>
+			      <li><a href="#">Link</a></li>
+			      <li class="dropdown">
+			        <a href="#" class="dropdown-toggle" data-toggle="dropdown">Dropdown <b class="caret"></b></a>
+			        <ul class="dropdown-menu">
+			          <li><a href="#">Action</a></li>
+			          <li><a href="#">Another action</a></li>
+			          <li><a href="#">Something else here</a></li>
+			          <li><a href="#">Separated link</a></li>
+			          <li><a href="#">One more separated link</a></li>
+			        </ul>
+			      </li>
+			    </ul>
+			 
+			  </div><!-- /.navbar-collapse -->
+			</nav>';
+		    
+   }
+   return $block;
+}
+*/
+function tweaks_views_post_execute(&$view) {
+ //if ($view->name == 'homepage_blocks') {
+   foreach ($view->result as $result) {
+   
+    //if( $result->nid == 1 ){
+       $result->node_title = 'something here'; 
+      // }
+    
+   }
+ //}
+}
+  
+  
+  
