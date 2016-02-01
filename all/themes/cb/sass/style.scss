@@ -6,6 +6,11 @@
 body { overflow-x: hidden; }
 a:hover{ text-decoration: none; }
 .img-rounded { border-radius: 25px; }
+.front { 
+  section.col-sm-12 { padding: 0px; }
+}
+ 
+
 /* GENERIC STYLE */
 
 /**** HEADER SECTION ****/
@@ -14,12 +19,12 @@ a:hover{ text-decoration: none; }
 
   .topmost-header {
     .col-md-4 {
-	right: 1%;
-	float: right;
+	  right: 1%;
+	  float: right;
     }
-.form-control {  
-  height: 43px;
-}
+	.form-control {  
+	  height: 43px;
+    }
   }
 }
 
@@ -67,6 +72,14 @@ ul.dropdown-menu {
 /**** HEADER SECTION ****/
 
 /**** BODY SECTION ****/
+@media (min-width: 768px) {
+  .node-type-drinks, .node-type-webform {  
+    .col-sm-12 {
+      padding: 25px 10%;
+    }
+  }
+}
+
 .front {
   .container-fluid {
     padding-left: 0;
@@ -78,7 +91,7 @@ ul.dropdown-menu {
 	  margin-top: 20px;
 	  text-align: center;
 	  
-	  h2.block-title {font-weight: bold;}
+	  h2.block-title {font-weight: 500;}
 		
 	  h2::after{
 		border-bottom: 1px solid #E5E5E5;
@@ -92,6 +105,18 @@ ul.dropdown-menu {
 	   margin-top: 10px;	    
 	  }
 	} 
+	.region-content {
+	  section:nth-child(2) {
+	    background-color: #F5F5DC;
+	  }
+	}
+	
+	.region-bottom {
+	  background-color: #F5F5DC;
+	  padding-top: 25px;
+	  padding-bottom: 25px;
+	}
+	
   }
 }
 
@@ -108,43 +133,6 @@ ul.dropdown-menu {
     }
   }
 }
-/*@media only screen and (min-width: 1200px) {
-  .front {
-    .row {
-	  .beverage-img, .dyk-img {}
-	  .beverage-termname {
-	    padding: 10px 70px;
-		bottom: 0px;
-		left: 21%;
-		
-	  }
-	}
-  }
-}
-
-@media only screen and (max-width: 1199px) {
-  .front {
-    .row {
-	  .beverage-img, .dyk-img {}
-	  .beverage-termname {
-	    padding: 10px 70px;
-		bottom: 0px;
-		left: 21%;
-		
-	  }
-	}
-  }
-}
-@media only screen and (max-width: 320px) {
-  .front {
-    .row {
-	  .beverage-img, .dyk-img {}
-	  .beverage-termname {
-	  
-	   }
-	}
-  }
-}*/
 
 .container-fluid {
   padding-left: 0;
@@ -173,7 +161,6 @@ ul.dropdown-menu {
   border: 0;
   box-shadow: none;
   padding: 0;
-  padding: 0 10%;
   font-size: 16px;
   
   .glyphicon {padding-right: 7px;}
@@ -264,6 +251,7 @@ ul.dropdown-menu {
   color: #fff;
   background-color: #333;
   text-align: center;
+  margin-top: 0;
   
   h2 {
     margin: 0 !important;
@@ -283,7 +271,66 @@ form#webform-client-form-10 {
 
 /*** CONTACT FORM ***/
 
+/* make sidebar nav vertical */ 
+#block-tweaks-taxonomy-menu {
+  .dropdown-menu {
+    position: relative; 
+    display: block; 
+    width: 100%;
+    border: none;
+    margin: 0;
+  }
+  
+  .level-1, .level-2 {
+    padding-left: 0;
+    
+    a.active {
+      background-color: #333;
+      color: #165BA8;
+    }
+  }
+  .level-1 a {padding-left: 10%;}
+  .level-2 a {padding-left: 15%;}
+  
+  @media (min-width: 768px) {
+   .navbar-collapse {
+      height: auto;
+      border-top: 0;
+      box-shadow: none;
+      max-height: none;
+      padding-left:0;
+      padding-right:0;
+    }
+    .navbar-collapse.collapse {
+      display: block !important;
+      width: auto !important;
+      padding-bottom: 0;
+      overflow: visible !important;
+    }
+  
+    .navbar-collapse.in {
+      overflow-x: visible;
+    }
 
+    .navbar {
+	  max-width:300px;
+	  margin-right: 0;
+	  margin-left: 0;
+    }	
+
+    .navbar-nav,
+    .navbar-nav > li,
+    .navbar-left,
+    .navbar-right,
+    .navbar-header
+    {float:none !important;}
+
+    .navbar-right .dropdown-menu {left:0;right:auto;}
+    .navbar-collapse .navbar-nav.navbar-right:last-child {
+      margin-right: 0;
+    }
+  }
+}
 
 
 

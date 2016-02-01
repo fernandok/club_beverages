@@ -11,6 +11,9 @@ a:hover {
 .img-rounded {
   border-radius: 25px; }
 
+.front section.col-sm-12 {
+  padding: 0px; }
+
 /* GENERIC STYLE */
 /**** HEADER SECTION ****/
 .topmost-header {
@@ -49,6 +52,9 @@ ul.dropdown-menu {
 
 /**** HEADER SECTION ****/
 /**** BODY SECTION ****/
+@media (min-width: 768px) {
+  .node-type-drinks .col-sm-12, .node-type-webform .col-sm-12 {
+    padding: 25px 10%; } }
 .front .container-fluid {
   padding-left: 0;
   padding-right: 0; }
@@ -58,56 +64,25 @@ ul.dropdown-menu {
     margin-top: 20px;
     text-align: center; }
     .front .container-fluid .row h2.block-title {
-      font-weight: bold; }
+      font-weight: 500; }
     .front .container-fluid .row h2::after {
       border-bottom: 1px solid #E5E5E5; }
     .front .container-fluid .row #block-views-beverage-vocab-block {
       margin-bottom: 20px; }
     .front .container-fluid .row h2.beverage-termname {
       margin-top: 10px; }
+  .front .container-fluid .region-content section:nth-child(2) {
+    background-color: #F5F5DC; }
+  .front .container-fluid .region-bottom {
+    background-color: #F5F5DC;
+    padding-top: 25px;
+    padding-bottom: 25px; }
 
 .drink-categories .row .col .beverage-img img, .drink-categories .row .col .dyk-img img {
   margin-left: auto;
   margin-right: auto;
   border-radius: 25px; }
 
-/*@media only screen and (min-width: 1200px) {
-  .front {
-    .row {
-	  .beverage-img, .dyk-img {}
-	  .beverage-termname {
-	    padding: 10px 70px;
-		bottom: 0px;
-		left: 21%;
-		
-	  }
-	}
-  }
-}
-
-@media only screen and (max-width: 1199px) {
-  .front {
-    .row {
-	  .beverage-img, .dyk-img {}
-	  .beverage-termname {
-	    padding: 10px 70px;
-		bottom: 0px;
-		left: 21%;
-		
-	  }
-	}
-  }
-}
-@media only screen and (max-width: 320px) {
-  .front {
-    .row {
-	  .beverage-img, .dyk-img {}
-	  .beverage-termname {
-	  
-	   }
-	}
-  }
-}*/
 .container-fluid {
   padding-left: 0;
   padding-right: 0; }
@@ -126,7 +101,6 @@ ul.dropdown-menu {
   border: 0;
   box-shadow: none;
   padding: 0;
-  padding: 0 10%;
   font-size: 16px; }
   .well .glyphicon {
     padding-right: 7px; }
@@ -199,7 +173,8 @@ ul.dropdown-menu {
 .footer {
   color: #fff;
   background-color: #333;
-  text-align: center; }
+  text-align: center;
+  margin-top: 0; }
   .footer h2 {
     margin: 0 !important;
     font-size: 22px; }
@@ -212,5 +187,51 @@ form#webform-client-form-10 #edit-submitted-name, form#webform-client-form-10 #e
   margin-left: 8px; }
 
 /*** CONTACT FORM ***/
+/* make sidebar nav vertical */
+#block-tweaks-taxonomy-menu .dropdown-menu {
+  position: relative;
+  display: block;
+  width: 100%;
+  border: none;
+  margin: 0; }
+#block-tweaks-taxonomy-menu .level-1, #block-tweaks-taxonomy-menu .level-2 {
+  padding-left: 0; }
+  #block-tweaks-taxonomy-menu .level-1 a.active, #block-tweaks-taxonomy-menu .level-2 a.active {
+    background-color: #333;
+    color: #165BA8; }
+#block-tweaks-taxonomy-menu .level-1 a {
+  padding-left: 10%; }
+#block-tweaks-taxonomy-menu .level-2 a {
+  padding-left: 15%; }
+@media (min-width: 768px) {
+  #block-tweaks-taxonomy-menu .navbar-collapse {
+    height: auto;
+    border-top: 0;
+    box-shadow: none;
+    max-height: none;
+    padding-left: 0;
+    padding-right: 0; }
+  #block-tweaks-taxonomy-menu .navbar-collapse.collapse {
+    display: block !important;
+    width: auto !important;
+    padding-bottom: 0;
+    overflow: visible !important; }
+  #block-tweaks-taxonomy-menu .navbar-collapse.in {
+    overflow-x: visible; }
+  #block-tweaks-taxonomy-menu .navbar {
+    max-width: 300px;
+    margin-right: 0;
+    margin-left: 0; }
+  #block-tweaks-taxonomy-menu .navbar-nav,
+  #block-tweaks-taxonomy-menu .navbar-nav > li,
+  #block-tweaks-taxonomy-menu .navbar-left,
+  #block-tweaks-taxonomy-menu .navbar-right,
+  #block-tweaks-taxonomy-menu .navbar-header {
+    float: none !important; }
+  #block-tweaks-taxonomy-menu .navbar-right .dropdown-menu {
+    left: 0;
+    right: auto; }
+  #block-tweaks-taxonomy-menu .navbar-collapse .navbar-nav.navbar-right:last-child {
+    margin-right: 0; } }
 
 /*# sourceMappingURL=style.css.map */
